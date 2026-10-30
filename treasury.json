@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA US Treasury Sample DEMO #26",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A simulated bond-linked token, for education only, not a US Treasury security.",
+  "properties": {
+    "assetId": "treasury",
+    "tokenId": 26,
+    "sampleCategory": "Bonds",
+    "symbol": "UST10Y",
+    "illustrativeTokenPriceUSD": 10,
+    "sampleSupply": 50000,
+    "riskClassification": "Low",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Bonds"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Low"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

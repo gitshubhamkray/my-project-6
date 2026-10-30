@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Bitcoin DEMO #22",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A decentralised digital asset with high volatility and market risk.",
+  "properties": {
+    "assetId": "bitcoin",
+    "tokenId": 22,
+    "sampleCategory": "Digital Assets",
+    "symbol": "BTC",
+    "illustrativeTokenPriceUSD": 10,
+    "sampleSupply": 200000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Digital Assets"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Palladium DEMO #4",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A scarce metal largely associated with automotive catalysts.",
+  "properties": {
+    "assetId": "palladium",
+    "tokenId": 4,
+    "sampleCategory": "Precious Metals",
+    "symbol": "XPD",
+    "illustrativeTokenPriceUSD": 8,
+    "sampleSupply": 25000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Precious Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

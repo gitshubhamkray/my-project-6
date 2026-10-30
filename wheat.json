@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Wheat DEMO #15",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A major staple crop traded on global commodity markets.",
+  "properties": {
+    "assetId": "wheat",
+    "tokenId": 15,
+    "sampleCategory": "Agriculture",
+    "symbol": "WHEAT",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 70000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

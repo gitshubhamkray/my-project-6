@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Coffee DEMO #18",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An agricultural soft commodity sensitive to growing conditions.",
+  "properties": {
+    "assetId": "coffee",
+    "tokenId": 18,
+    "sampleCategory": "Agriculture",
+    "symbol": "COFFEE",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 50000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

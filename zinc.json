@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Zinc DEMO #12",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An industrial metal often used to galvanise steel.",
+  "properties": {
+    "assetId": "zinc",
+    "tokenId": 12,
+    "sampleCategory": "Industrial Metals",
+    "symbol": "ZINC",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 40000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Industrial Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

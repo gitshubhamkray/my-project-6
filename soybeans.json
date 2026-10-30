@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Soybeans DEMO #17",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An agricultural crop central to global food and feed supply chains.",
+  "properties": {
+    "assetId": "soybeans",
+    "tokenId": 17,
+    "sampleCategory": "Agriculture",
+    "symbol": "SOYBEANS",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 65000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA XRP DEMO #25",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A digital asset associated with cross-border value transfer.",
+  "properties": {
+    "assetId": "xrp",
+    "tokenId": 25,
+    "sampleCategory": "Digital Assets",
+    "symbol": "XRP",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 130000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Digital Assets"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

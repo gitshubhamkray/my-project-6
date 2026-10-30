@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Nickel DEMO #11",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A metal important in stainless steel and certain battery chemistries.",
+  "properties": {
+    "assetId": "nickel",
+    "tokenId": 11,
+    "sampleCategory": "Industrial Metals",
+    "symbol": "NICKEL",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 55000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Industrial Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

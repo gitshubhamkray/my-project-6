@@ -1,0 +1,39 @@
+import React,{createContext,useCallback,useContext,useEffect,useMemo,useState} from 'react';
+import {ASSETS} from '../data/assets';
+import {fetchMarkets,type Quote} from '../lib/api';
+import {connectWallet,CHAIN_ID,injected,balanceFor} from '../lib/wallet';
+export interface Transaction{id:string;assetId:string;quantity:number;amount:number;type:'Demo'|'Testnet';at:string;hash?:string;status:'Confirmed'|'Pending'|'Failed'}
+export interface Alert{id:string;assetId:string;target:number;direction:'above'|'below';createdAt:string}
+export interface Kyc {name:string;email:string;country:string;acknowledged:boolean;status:'Not Started'|'Pending'|'Verified (simulated)'|'Rejected (simulated)'}
+interface State { holdings:Record<string,number>;transactions:Transaction[];watchlist:string[];alerts:Alert[];demoCash:number;kyc:Kyc;theme:'dark'|'light';onboarding:boolean }
+const initial:State={holdings:{gold:18,silver:24,bitcoin:5,treasury:12,copper:10},transactions:[],watchlist:['gold','silver','bitcoin'],alerts:[],demoCash:2500,kyc:{name:'',email:'',country:'',acknowledged:false,status:'Not Started'},theme:'dark',onboarding:false};
+function load():State{try{const parsed=JSON.parse(localStorage.getItem('vestora-demo-v1')||'null');return parsed&&typeof parsed==='object'?{...initial,...parsed,holdings:{...initial.holdings,...parsed.holdings},kyc:{...initial.kyc,...parsed.kyc}}:initial}catch{return initial}}
+const noQuote=(id:string):Quote=>({id,price:null,changePct:null,status:'Unavailable',source:null,asOf:null,currency:'USD',unit:ASSETS.find(a=>a.id===id)?.unit||'USD'});
+interface ContextShape {state:State;setTheme:(v:'dark'|'light')=>void;setKyc:(v:Kyc)=>void;setOnboarding:(v:boolean)=>void;importWorkspace:(data:Partial<State>)=>void;watch:(id:string)=>void;addAlert:(assetId:string,target:number,direction:'above'|'below')=>void;removeAlert:(id:string)=>void;addDemoInvestment:(id:string,qty:number,cost:number)=>void;recordTestnet:(id:string,qty:number,cost:number,hash:string)=>void;quotes:Record<string,Quote>;marketsLoading:boolean;marketsError:string;refreshMarkets:()=>Promise<void>;wallet:string;chainId:number|null;walletBusy:boolean;walletError:string;connect:()=>Promise<void>;disconnect:()=>void;switchChain:()=>Promise<void>;walletBalances:Record<string,number>;refreshBalances:()=>Promise<void>;toast:string|null;notify:(message:string)=>void;investAsset:string|null;openInvest:(id:string)=>void;closeInvest:()=>void }
+const Context=createContext<ContextShape|null>(null);
+export function AppProvider({children}:{children:React.ReactNode}){
+ const [state,setState]=useState<State>(load);
+ const [quotes,setQuotes]=useState<Record<string,Quote>>({});const [marketsLoading,setMarketsLoading]=useState(true);const [marketsError,setMarketsError]=useState('');
+ const [wallet,setWallet]=useState('');const [chainId,setChainId]=useState<number|null>(null);const [walletBusy,setWalletBusy]=useState(false);const [walletError,setWalletError]=useState('');const [walletBalances,setWalletBalances]=useState<Record<string,number>>({});
+ const [toast,setToast]=useState<string|null>(null);const [investAsset,setInvestAsset]=useState<string|null>(null);
+ useEffect(()=>{try{localStorage.setItem('vestora-demo-v1',JSON.stringify(state))}catch{}document.documentElement.dataset.theme=state.theme},[state]);
+ useEffect(()=>{if(toast){const t=setTimeout(()=>setToast(null),4700);return()=>clearTimeout(t)}},[toast]);
+ const notify=useCallback((text:string)=>setToast(text),[]);
+ const refreshMarkets=useCallback(async()=>{setMarketsLoading(true);setMarketsError('');try{const data=await fetchMarkets();setQuotes(Object.fromEntries(data.map(q=>[q.id,q])))}catch(e){setMarketsError(e instanceof Error?e.message:'Market API unavailable');setQuotes({})}finally{setMarketsLoading(false)}},[]);
+ useEffect(()=>{void refreshMarkets();const timer=setInterval(()=>void refreshMarkets(),5*60*1000);return()=>clearInterval(timer)},[refreshMarkets]);
+ const refreshBalances=useCallback(async()=>{if(!wallet)return;const balances:Record<string,number>={};for(let i=0;i<ASSETS.length;i+=4){await Promise.all(ASSETS.slice(i,i+4).map(async a=>{try{const b=await balanceFor(wallet,a.tokenId);if(b!==null)balances[a.id]=b}catch{}}))}setWalletBalances(balances)},[wallet]);
+ useEffect(()=>{if(wallet&&chainId===CHAIN_ID)void refreshBalances();else setWalletBalances({})},[wallet,chainId,refreshBalances]);
+ useEffect(()=>{const eth=injected();if(!eth?.on)return;const accounts=(a:string[])=>{setWallet(a[0]||'');if(!a[0])setWalletBalances({})};const chains=(v:string)=>{setChainId(parseInt(v,16));setWalletBalances({})};eth.on('accountsChanged',accounts);eth.on('chainChanged',chains);return()=>{eth.removeListener?.('accountsChanged',accounts);eth.removeListener?.('chainChanged',chains)}},[]);
+ const connect=useCallback(async()=>{setWalletBusy(true);setWalletError('');try{const data=await connectWallet();setWallet(data.address);setChainId(data.chainId);notify('MetaMask connected. Testnet assets are separate from demo holdings.')}catch(e){setWalletError(e instanceof Error?e.message:'Wallet connection failed')}finally{setWalletBusy(false)}},[notify]);
+ const disconnect=()=>{setWallet('');setChainId(null);setWalletBalances({});notify('Disconnected in VESTORA. MetaMask permissions are managed in MetaMask.')};
+ const switchChain=async()=>{try{const {switchTestnet}=await import('../lib/wallet');await switchTestnet();setChainId(CHAIN_ID);notify('Switched to configured testnet')}catch(e){setWalletError(e instanceof Error?e.message:'Network switch failed')}};
+ const watch=(id:string)=>setState(s=>({...s,watchlist:s.watchlist.includes(id)?s.watchlist.filter(w=>w!==id):[...s.watchlist,id]}));
+ const addAlert=(assetId:string,target:number,direction:'above'|'below')=>{setState(s=>({...s,alerts:[{id:crypto.randomUUID(),assetId,target,direction,createdAt:new Date().toISOString()},...s.alerts]}));notify('Demo alert saved in this browser (no background notifications).')};
+ const removeAlert=(id:string)=>setState(s=>({...s,alerts:s.alerts.filter(a=>a.id!==id)}));
+ const addDemoInvestment=(assetId:string,quantity:number,cost:number)=>{setState(s=>({...s,holdings:{...s.holdings,[assetId]:(s.holdings[assetId]||0)+quantity},demoCash:Math.round((s.demoCash-cost)*100)/100,transactions:[{id:crypto.randomUUID(),assetId,quantity,amount:cost,type:'Demo',at:new Date().toISOString(),status:'Confirmed'},...s.transactions]}));notify('Demo investment added to your simulated portfolio')};
+ const recordTestnet=(assetId:string,quantity:number,cost:number,hash:string)=>{setState(s=>({...s,transactions:[{id:crypto.randomUUID(),assetId,quantity,amount:cost,type:'Testnet',at:new Date().toISOString(),hash,status:'Confirmed'},...s.transactions]}));void refreshBalances();notify('Testnet transaction confirmed on-chain')};
+ const ctx=useMemo<ContextShape>(()=>({state,setTheme:v=>setState(s=>({...s,theme:v})),setKyc:v=>setState(s=>({...s,kyc:v})),setOnboarding:v=>setState(s=>({...s,onboarding:v})),importWorkspace:data=>setState(s=>({...s,...data,kyc:s.kyc,onboarding:s.onboarding})),watch,addAlert,removeAlert,addDemoInvestment,recordTestnet,quotes,marketsLoading,marketsError,refreshMarkets,wallet,chainId,walletBusy,walletError,connect,disconnect,switchChain,walletBalances,refreshBalances,toast,notify,investAsset,openInvest:setInvestAsset,closeInvest:()=>setInvestAsset(null)}),[state,quotes,marketsLoading,marketsError,refreshMarkets,wallet,chainId,walletBusy,walletError,walletBalances,toast,refreshBalances,notify,investAsset]);
+ return <Context.Provider value={ctx}>{children}</Context.Provider>;
+}
+export function useApp(){const ctx=useContext(Context);if(!ctx)throw new Error('AppProvider missing');return ctx}
+export function useQuote(id:string){const {quotes}=useApp();return quotes[id]||noQuote(id)}

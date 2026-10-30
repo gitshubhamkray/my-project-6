@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Cocoa DEMO #19",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A soft commodity exposed to concentrated production regions.",
+  "properties": {
+    "assetId": "cocoa",
+    "tokenId": 19,
+    "sampleCategory": "Agriculture",
+    "symbol": "COCOA",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 45000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

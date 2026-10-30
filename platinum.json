@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Platinum DEMO #3",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A rare precious metal used in industry, automotive catalysts and jewellery.",
+  "properties": {
+    "assetId": "platinum",
+    "tokenId": 3,
+    "sampleCategory": "Precious Metals",
+    "symbol": "XPT",
+    "illustrativeTokenPriceUSD": 8,
+    "sampleSupply": 30000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Precious Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

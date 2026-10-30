@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Copper DEMO #9",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An industrial metal widely used in electrification, construction and manufacturing.",
+  "properties": {
+    "assetId": "copper",
+    "tokenId": 9,
+    "sampleCategory": "Industrial Metals",
+    "symbol": "COPPER",
+    "illustrativeTokenPriceUSD": 6,
+    "sampleSupply": 90000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Industrial Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Solana DEMO #24",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A blockchain ecosystem with a highly volatile native token.",
+  "properties": {
+    "assetId": "solana",
+    "tokenId": 24,
+    "sampleCategory": "Digital Assets",
+    "symbol": "SOL",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 120000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Digital Assets"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

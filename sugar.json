@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Sugar DEMO #20",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An agricultural commodity also connected to ethanol markets.",
+  "properties": {
+    "assetId": "sugar",
+    "tokenId": 20,
+    "sampleCategory": "Agriculture",
+    "symbol": "SUGAR",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 50000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

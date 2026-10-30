@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Ethereum DEMO #23",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A blockchain network with a native asset used to pay transaction fees.",
+  "properties": {
+    "assetId": "ethereum",
+    "tokenId": 23,
+    "sampleCategory": "Digital Assets",
+    "symbol": "ETH",
+    "illustrativeTokenPriceUSD": 10,
+    "sampleSupply": 150000,
+    "riskClassification": "Very High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Digital Assets"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Very High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

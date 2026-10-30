@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Cotton DEMO #21",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A soft commodity used in textile production.",
+  "properties": {
+    "assetId": "cotton",
+    "tokenId": 21,
+    "sampleCategory": "Agriculture",
+    "symbol": "COTTON",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 45000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Agriculture"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

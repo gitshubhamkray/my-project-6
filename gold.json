@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Gold DEMO #1",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. An established precious metal often used as a store-of-value reference. Demo tokens do not represent legal ownership of bullion.",
+  "properties": {
+    "assetId": "gold",
+    "tokenId": 1,
+    "sampleCategory": "Precious Metals",
+    "symbol": "XAU",
+    "illustrativeTokenPriceUSD": 10,
+    "sampleSupply": 100000,
+    "riskClassification": "Moderate",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Precious Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "Moderate"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

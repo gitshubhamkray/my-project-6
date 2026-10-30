@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Aluminium DEMO #10",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A lightweight industrial metal used across transport and construction.",
+  "properties": {
+    "assetId": "aluminium",
+    "tokenId": 10,
+    "sampleCategory": "Industrial Metals",
+    "symbol": "ALUMINUM",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 60000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Industrial Metals"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}

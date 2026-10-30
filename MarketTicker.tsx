@@ -1,0 +1,4 @@
+import {ASSETS} from '../data/assets';import {useQuote} from '../context/AppContext';import {formatReferencePrice} from '../lib/math';import {Change} from './Ui';import {Link} from 'react-router-dom';
+const ids=['gold','silver','platinum','wti','gas','copper','bitcoin','ethereum'];
+function Item({id}:{id:string}){const asset=ASSETS.find(a=>a.id===id)!;const q=useQuote(id);return <Link className="ticker-item" to={`/assets/${id}`}><span className="ticker-symbol">{asset.symbol}</span><span className="ticker-price">{q.price!==null?formatReferencePrice(q.price,q.unit):'N/A'}</span><Change value={q.changePct}/></Link>}
+export function MarketTicker(){return <div className="market-ticker"><div className="ticker-label"><span className="ticker-pulse"/> MARKET PULSE</div><div className="ticker-items">{ids.map(id=><Item key={id} id={id}/>)}</div></div>}

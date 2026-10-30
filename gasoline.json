@@ -1,0 +1,29 @@
+{
+  "name": "VESTORA Gasoline DEMO #8",
+  "description": "Educational Sepolia sample token. NO legal claim to commodities, securities, cryptocurrency, real estate, yields or cash flows. A refined petroleum fuel benchmark.",
+  "properties": {
+    "assetId": "gasoline",
+    "tokenId": 8,
+    "sampleCategory": "Energy",
+    "symbol": "RBOB",
+    "illustrativeTokenPriceUSD": 5,
+    "sampleSupply": 45000,
+    "riskClassification": "High",
+    "realWorldOwnership": false,
+    "testnetOnly": true
+  },
+  "attributes": [
+    {
+      "trait_type": "Category",
+      "value": "Energy"
+    },
+    {
+      "trait_type": "Risk",
+      "value": "High"
+    },
+    {
+      "trait_type": "Testnet only",
+      "value": "Yes"
+    }
+  ]
+}
